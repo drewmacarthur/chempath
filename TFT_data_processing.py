@@ -127,28 +127,24 @@ numeric_FT4_female = pd.to_numeric(FT4_female["Result"])
 #get basic data characteristics
 display(numeric_FT4_female.describe())
 
-#find hypo, hyper and euthyroid numbers
+#find hypo, hyper and euthyroid numbers in our dataset based on TSH levels
+#example 
 pd.to_numeric(FT3_female["Result"])
-pd.to_numeric(FT3_male["Result"])
+#hypothyroid is TSH > 4.78 mIU/L
+#hyperthyroid is TSH < 0.55 mIU/L
+hypothyroid = TSH_extracted[TSH_extracted["TSH_result"].values > 4.78]
+hyperthyroid = TSH_extracted[TSH_extracted["TSH_result"].values < 0.55]
+euthyroid = TSH_extracted[0.55 < TSH_extracted["TSH_result"].values < 4.78]
 
-
-display(TSH_male["Age"].describe())
-
-import scipy.stats as stats
+display(hypothyroid.describe())
+display(hyperthyroid.describe())
+display(euthyroid.describe())
 
 #determine significance of the means between male and female
-#age difference
+import scipy.stats as stats
 
-x = FT3_male["Result"]
-y = FT3_female["Result"]
+x = FT4_male["Result"]
+y = FT4_female["Result"]
 
 t_stat = stats.ttest_ind(x, y, nan_policy = "omit")
-print(t_stat)
-
-
-
-
-
-
-
-
+print(t_stat) #repeat for TSH and FT3
