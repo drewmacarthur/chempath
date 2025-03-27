@@ -128,10 +128,7 @@ numeric_FT4_female = pd.to_numeric(FT4_female["Result"])
 display(numeric_FT4_female.describe())
 
 #find hypo, hyper and euthyroid numbers in our dataset based on TSH levels
-#example 
-pd.to_numeric(FT3_female["Result"])
-#hypothyroid is TSH > 4.78 mIU/L
-#hyperthyroid is TSH < 0.55 mIU/L
+#hypothyroid is TSH > 4.78 mIU/L and hyperthyroid is TSH < 0.55 mIU/L
 hypothyroid = TSH_extracted[TSH_extracted["TSH_result"].values > 4.78]
 hyperthyroid = TSH_extracted[TSH_extracted["TSH_result"].values < 0.55]
 euthyroid = TSH_extracted[0.55 < TSH_extracted["TSH_result"].values < 4.78]
