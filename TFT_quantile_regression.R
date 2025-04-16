@@ -250,3 +250,9 @@ hist(tsh_ft4_filt$FT4_result,
      breaks = 100,
      prob = TRUE)
 lines(x = density(x = tsh_ft4_filt$FT4_result), col = "black", lwd = 2)
+
+#compare means between groups
+
+t.test(ft4_female$FT4_result, ft4_male$FT4_result, var.equal = FALSE)
+
+t.test(ft3_female$FT3_result, ft3_male$FT3_result, var.equal = FALSE)
